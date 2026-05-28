@@ -22,15 +22,9 @@ class Solution {
         while(!q.isEmpty()){
             List<Integer> level = new ArrayList<>();
             int size = q.size();
-            boolean leftToRight = true;
             for(int i=0;i<size;i++){
                 TreeNode temp  = q.remove();
-                if(leftToRight==true){
-                    level.add(temp.val);
-                }
-                else{
-                    level.add(0, temp.val);
-                } 
+                level.add(temp.val);
 
                 if(temp.left!=null){
                     q.add(temp.left);
@@ -40,8 +34,6 @@ class Solution {
                 }
             }
             ans.add(level);
-
-            leftToRight = !leftToRight;
             
         }
         return ans;
