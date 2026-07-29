@@ -1,0 +1,19 @@
+class Solution {
+    int solve(int idx,int[] nums, int[] dp){
+        if(idx<0) return 0;
+        if(dp[idx]!=-1) return dp[idx];
+
+        int rob = nums[idx] + solve(idx-2, nums, dp);
+        int notRob = solve(idx-1, nums, dp);
+
+        dp[idx] = Math.max(rob, notRob);
+        return Math.max(rob, notRob);
+        
+    }
+    public int rob(int[] nums) {
+        int n=nums.length;
+        int[] dp = new int[n];
+        Arrays.fill(dp, -1);
+        return solve(n-1, nums, dp);
+    }
+}
